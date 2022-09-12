@@ -1,0 +1,17 @@
+{
+    "name": "mjy191/my-logs",
+    "description": "记录业务日志，请求和输出日志，mysql日志",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mjy191\\MyLogs\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MengJinYi",
+            "email": "mjy191@163.com"
+        }
+    ],
+    "require": {}
+}
