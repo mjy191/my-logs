@@ -17,7 +17,6 @@ class MyLogs
         if (!is_string($content)) {
             $content = self::toString($content);
         }
-        $backtrace = debug_backtrace();
         if (PHP_SAPI == 'cli') {
             $uri = 'cli[' . implode(' ', $_SERVER['argv']) . ']';
             $log_path = base_path() . '/logs/cli/' . date('Ym');
@@ -27,7 +26,6 @@ class MyLogs
         }
         $log_format = date('Y-m-d H:i:s')
             . " {$uri}"
-            . " [{$backtrace[1]['file']}:{$backtrace[1]['line']}]"
             . " cgi[" . PHP_SAPI . "]"
             . " logId[{$logId}] "
             . " {$logName}[{$content}]" . PHP_EOL;
