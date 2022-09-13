@@ -50,3 +50,8 @@ grep 20220913152544632030780f64a *
 2022-09-13 15:25:44 uri[/admin/test/index] [/www/laravel-wx-pay/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php:404] cgi[cli-server] logId[20220913152544632030780f64a]  mysql[select * from `user` where `id` = "1" limit 1]
 2022-09-13 15:25:44 uri[/admin/test/index] [/www/laravel-wx-pay/app/Http/Middleware/Logs.php:22] cgi[cli-server] logId[20220913152544632030780f64a]  response[{"code":1,"msg":"success","data":{"id":1,"userName":"aa"},"timestamp":1663053944}]
 ```
+
+### 1.4 安装
+```
+composer require mjy191/my-logs
+```
