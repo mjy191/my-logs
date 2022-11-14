@@ -3,6 +3,7 @@
 namespace Mjy191\MyLogs;
 
 use Illuminate\Support\Facades\Request;
+use Mjy191\Tools\Tools;
 
 class MyLogs
 {
@@ -19,12 +20,10 @@ class MyLogs
         if (!is_string($content)) {
             $content = self::toString($content);
         }
+        $log_path = base_path() . '/logs/' . date('Ym');
+        $uri = 'uri[' . Tools::getUri() . ']';
         if (PHP_SAPI == 'cli') {
-            $uri = 'cli[' . implode(' ', $_SERVER['argv']) . ']';
-            $log_path = base_path() . '/logs/cli/' . date('Ym');
-        } else {
-            $uri = 'uri[' . $_SERVER['REQUEST_URI'] . ']';
-            $log_path = base_path() . '/logs/' . date('Ym');
+            $uri .= ' cli[' . implode(' ', $_SERVER['argv']) . ']';
         }
         $log_format = date('Y-m-d H:i:s')
             . " {$uri}"
