@@ -2,6 +2,8 @@
 
 namespace Mjy191\MyLogs;
 
+use Illuminate\Support\Facades\Request;
+
 class MyLogs
 {
 
@@ -84,7 +86,7 @@ class MyLogs
      */
     public static function reqLog($request)
     {
-        $body = file_get_contents('php://input');
+        $body = Request::instance()->getContent();
         if($body){
             self::write('request',$body);
         }else{
