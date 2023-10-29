@@ -2,6 +2,7 @@
 
 namespace Mjy191\MyLogs;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Mjy191\Tools\Tools;
 
@@ -67,11 +68,10 @@ class MyLogs
 
     /**
      * 记录db操作日志
-     * @param $db Illuminate\Support\Facades\DB;
      */
-    public static function dBLog($db)
+    public static function dBLog()
     {
-        $db::listen(function ($query) {
+        DB::listen(function ($query) {
             $tmp = str_replace('?', '"' . '%s' . '"', $query->sql);
             $sql = vsprintf($tmp, $query->bindings);
             $sql = str_replace("\\", "", $sql);
