@@ -86,10 +86,14 @@ class MyLogs
     public static function reqLog($request)
     {
         $body = Request::instance()->getContent();
-        if($body){
-            self::write('request',$body);
-        }else{
-            self::write('request',$request->post());
+        if ($body) {
+            self::write('request', $body);
+        } else {
+            self::write('request', $request->post());
+        }
+        //记录header信息
+        if (PHP_SAPI == 'cli') {
+            self::write('headerInfo', ['method' => $request->getMethod(), 'header' => $request->header()]);
         }
     }
 
@@ -100,7 +104,7 @@ class MyLogs
      */
     public static function resLog($request, $response)
     {
-        if($request->method()=='POST'){
+        if ($request->method() == 'POST') {
             self::write('response', $response->getContent());
         }
     }
