@@ -92,8 +92,12 @@ class MyLogs
             self::write('request', $request->post());
         }
         //记录header信息
-        if (PHP_SAPI == 'cli') {
-            self::write('headerInfo', ['method' => $request->getMethod(), 'header' => $request->header()]);
+        if (PHP_SAPI != 'cli') {
+            self::write('headerInfo', [
+                'method' => $request->getMethod(),
+                'header' => $request->header(),
+                'ip' => $request->getClientIp(),
+            ]);
         }
     }
 
